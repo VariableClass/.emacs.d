@@ -1,3 +1,6 @@
+;; Add .emacs.d/lisp to load path
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ;; Add additional package source (MELPA)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -37,8 +40,12 @@
 ;; Disable splash screen
 (setq-default inhibit-splash-screen t)
 
+;; Configure multi-term
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
+
 ;; Open ansi-term in main buffer on startup
-(setq-default initial-buffer-choice 'eshell)
+(setq-default initial-buffer-choice 'multi-term)
 
 ;; Open empty window below and to left of terminal
 (split-window-horizontally)
