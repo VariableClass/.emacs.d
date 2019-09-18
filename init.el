@@ -48,9 +48,8 @@
 ;; Open ansi-term in main buffer on startup
 (setq-default initial-buffer-choice 'multi-term)
 
-;; Open empty window below and to left of terminal
+;; Open window to left of terminal
 (split-window-horizontally)
-(split-window-vertically)
 
 ;; Enable soft wrap at 120 characters
 (setq-default visual-fill-column-width 120)
