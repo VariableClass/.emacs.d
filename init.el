@@ -1,21 +1,48 @@
-;;; Add .emacs.d/lisp to load path and import local modules
-(add-to-list 'load-path "~/.emacs.d/elisp/")
+;;; init.el --- Emacs initialisation
+;;; Commentary:
 
-;;; Perform any setup that can be achieved without external packages
-(require 'core-setup)
-(customise-frame)
-(set-theme)
-(configure-editor)
-(define-mouse-behaviour)
-(divert-customize "~/.emacs.d/elisp/custom.el")
+;;; Code:
+(defun init()
+  "Initialise Emacs."
 
-;;; Attempt package installation
-(require 'install-packages)
-(install-packages
-  '(auto-complete csharp-mode dash epl f flycheck handoff multi-term omnisharp pkg-info popup s sx visual-fill-column))
+  ;; Add .emacs.d/lisp to load path and import local modules
+  (add-to-list 'load-path "~/.emacs.d/elisp/")
 
-;;; Configure the various downloaded packages
-(require 'package-config)
-(setup-multi-term)
-(setup-visual-fill-column 120)
-(setup-handoff)
+  ;; Perform any setup that can be achieved without external packages
+  (require 'core-setup)
+  (declare-function customise-frame 'core-setup ())
+  (declare-function set-theme 'core-setup ())
+  (declare-function configure-editor 'core-setup ())
+  (declare-function define-mouse-behaviour 'core-setup ())
+  (declare-function divert-customize 'core-setup (custom-file-path))
+  (customise-frame)
+  (set-theme)
+  (configure-editor)
+  (define-mouse-behaviour)
+  (divert-customize "~/.emacs.d/elisp/custom.el")
+
+  ;; Attempt package installation
+  (require 'install-packages)
+  (declare-function install-packages "install-packages" (packages))
+  (install-packages
+   '(auto-complete csharp-mode dash epl f flycheck handoff multi-term omnisharp pkg-info popup projectile s sx visual-fill-column))
+
+  ;; Configure the various downloaded packages
+  (require 'package-config)
+  (declare-function setup-multi-term "package-config"())
+  (declare-function setup-visual-fill-column "package-config" (line-wrap-index))
+  (declare-function setup-handoff "package-config" ())
+  (declare-function setup-projectile "package-config" ())
+  (declare-function setup-flycheck "package-config" ())
+  (declare-function setup-omnisharp "package-config" ())
+  (setup-multi-term)
+  (setup-visual-fill-column 120)
+  (setup-handoff)
+  (setup-projectile)
+  (setup-flycheck)
+  (setup-omnisharp))
+
+(init)
+
+(provide 'init)
+;;; init.el ends here

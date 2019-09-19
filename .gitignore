@@ -52,3 +52,9 @@ flycheck_*.el
 
 # Stack Exchange
 /.sx/
+
+# Cache
+/.cache/
+
+# Projectile
+projectile-bookmarks.eld

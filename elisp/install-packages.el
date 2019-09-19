@@ -1,8 +1,9 @@
-;;; 
-(defun install-packages(packages)
+;;; install-packages.el --- Install a provided list of packages
+;;; Commentary:
 
-  ;; Assign passed packages to package-list
-  (setq package-list packages)
+;;; Code:
+(defun install-packages(packages)
+  "Install packages from the provided PACKAGES list."
 
   ;; List the repositories containing them
   (setq package-archives
@@ -14,15 +15,17 @@
   (package-initialize)
   
   ;; Import package module
-  (require 'package) 
+  (require 'package)
 
-  ;; Fetch the list of packages available 
+  ;; Fetch the list of packages available
+  (defvar package-refresh-contents)
   (unless package-archive-contents
     (package-refresh-contents))
    
   ;; Install the missing packages
-  (dolist (package package-list)
+  (dolist (package packages)
     (unless (package-installed-p package)
       (package-install package))))
 
 (provide 'install-packages)
+;;; install-packages.el ends here
