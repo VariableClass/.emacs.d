@@ -12,7 +12,7 @@
 ;;; Attempt package installation
 (require 'install-packages)
 (install-packages
-  '(auto-complete csharp-mode dash epl f flycheck handoff multi-term omnisharp pkg-info popup s visual-fill-column))
+  '(auto-complete csharp-mode dash epl f flycheck handoff multi-term omnisharp pkg-info popup s sx visual-fill-column))
 
 ;;; Configure the various downloaded packages
 (require 'package-config)
