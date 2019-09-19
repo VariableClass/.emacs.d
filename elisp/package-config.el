@@ -2,13 +2,28 @@
 ;;; Commentary:
 
 ;;; Code:
-(defun setup-auto-complete()
-  "Setup auto completion."
+(defun setup-company()
+  "Setup company."
 
-  (require 'auto-complete)
+  (require 'company)
+  (require 'company-quickhelp)
 
-  ;; Use default auto-complete configuration
-  (ac-config-default))
+  ;; Add Emacs initialisation hook for company and set popup delay to 0
+  (add-hook 'after-init-hook 'global-company-mode)
+  (setq-default company-idle-delay 0)
+
+  ;; Enable company-quickhelp documentation popup
+  (company-quickhelp-mode t)
+
+  ;; Inherit colour scheme
+  (require 'color)
+  (let ((bg (face-attribute 'default :background)))
+    (custom-set-faces
+     `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 2)))))
+     `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
+     `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
+     `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+     `(company-tooltip-common ((t (:inherit font-lock-constant-face)))))))
 
 (defun setup-editorconfig()
   "Setup use of .editorconfig files."
@@ -47,11 +62,15 @@
 (defun setup-omnisharp()
   "Install Omnisharp server and add server start to csharp hook."
 
+  (require 'company)
   (require 'omnisharp)
   (declare-function omnisharp--install-server "omnisharp" (reinstall silent-installation))
   
   ;; Install Omnisharp server
   (omnisharp--install-server nil t)
+
+  ;; Add omnisharp to company's list of backends
+  (add-to-list 'company-backends 'company-omnisharp)
   
   ;; Start Omnisharp when opening a C# file
   (add-hook 'csharp-mode-hook 'omnisharp-mode))
