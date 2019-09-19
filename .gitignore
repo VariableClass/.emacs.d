@@ -58,3 +58,6 @@ flycheck_*.el
 
 # Projectile
 projectile-bookmarks.eld
+
+# Autocomplete
+ac-comphist.dat

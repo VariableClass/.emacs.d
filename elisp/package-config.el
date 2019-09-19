@@ -2,6 +2,21 @@
 ;;; Commentary:
 
 ;;; Code:
+(defun setup-auto-complete()
+  "Setup auto completion."
+
+  (require 'auto-complete)
+
+  ;; Use default auto-complete configuration
+  (ac-config-default))
+
+(defun setup-editorconfig()
+  "Setup use of .editorconfig files."
+
+  (require 'editorconfig)
+  
+  (editorconfig-mode 1))
+
 (defun setup-flycheck()
   "Enable flycheck for all programming modes."
 
