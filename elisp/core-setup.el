@@ -8,9 +8,13 @@
   ;; Enable column index indicator
   (setq-default column-number-mode t)
 
-  ;; Replace tabs with spaces and Set tab width
+  ;; Replace tabs with spaces and set tab width
   (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 2))
+  (setq-default tab-width 2)
+
+  ;; Bracket matching, first removing delay
+  (setq-default show-paren-delay 0)
+  (show-paren-mode 1))
 
 (defun define-mouse-behaviour()
   "Make pointer visible and have the cursor chase it."
