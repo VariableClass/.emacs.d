@@ -5,6 +5,11 @@
 (defun init()
   "Initialise Emacs."
 
+  ;; Determine operating system
+  (defvar linux-p (string-match "linux" (symbol-name system-type)))
+  (defvar macos-p (string-match "darwin" (symbol-name system-type)))
+  (defvar windows-p (string-match "windows" (symbol-name system-type)))
+
   ;; Add .emacs.d/lisp to load path and import local modules
   (add-to-list 'load-path "~/.emacs.d/elisp/")
 
