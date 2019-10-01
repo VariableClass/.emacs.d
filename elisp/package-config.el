@@ -2,6 +2,14 @@
 ;;; Commentary:
 
 ;;; Code:
+(defun setup-centered-cursor-mode()
+  "Set centered cursor mode."
+
+  (require 'centered-cursor-mode)
+
+  ;; Enable centered cursor mode globally
+  (global-centered-cursor-mode))
+
 (defun setup-company()
   "Setup company."
 
@@ -75,6 +83,14 @@
   
   ;; Enable projectile
   (projectile-mode +1))
+
+(defun setup-rainbow-mode()
+  "Enable highlighting of hexadecimal values as the colours they represent."
+
+  (require 'rainbow-mode)
+
+  ;; Enable global rainbow mode
+  (global-rainbow-mode))
 
 (defun setup-visual-fill-column(line-wrap-index)
   "Set soft line wrap at the provided LINE-WRAP-INDEX."

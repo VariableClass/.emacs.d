@@ -30,7 +30,7 @@
   (require 'install-packages)
   (declare-function install-packages "install-packages" (packages))
   (install-packages
-   '(csharp-mode company company-quickhelp dash editorconfig epl f flycheck handoff multi-term omnisharp pkg-info popup projectile s sx visual-fill-column yaml-mode))
+   '(centered-cursor-mode company company-quickhelp csharp-mode dash editorconfig epl f flycheck handoff multi-term omnisharp pkg-info popup projectile s sx visual-fill-column yaml-mode))
 
   ;; Configure the various downloaded packages
   (require 'package-config)
@@ -42,6 +42,8 @@
   (declare-function setup-company "package-config" ())
   (declare-function setup-omnisharp "package-config" ())
   (declare-function setup-yaml-mode "package-config" ())
+  (declare-function setup-rainbow-mode "package-config" ())
+  (declare-function setup-centered-cursor-mode "package-config" ())
   (setup-visual-fill-column 120)
   (setup-handoff)
   (setup-projectile)
@@ -49,7 +51,8 @@
   (setup-flycheck)
   (setup-company)
   (setup-omnisharp)
-  (setup-yaml-mode))
+  (setup-yaml-mode)
+  (setup-centered-cursor-mode))
 
 (init)
 
