@@ -7,7 +7,7 @@
 
   ;; List the repositories containing them
   (setq package-archives
-    '(("elpa" . "http://tromey.com/elpa/")
+    '(("elpa" . "https://elpa.gnu.org/")
       ("gnu" . "http://elpa.gnu.org/packages/")
       ("mepla" . "http://melpa.org/packages/")))
   
