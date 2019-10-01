@@ -14,7 +14,14 @@
 
   ;; Bracket matching, first removing delay
   (setq-default show-paren-delay 0)
-  (show-paren-mode 1))
+  (show-paren-mode 1)
+
+  ;; Enable auto brace insertion and newline behaviour
+  (require 'electric)
+  (add-to-list 'electric-layout-rules '(?{ . around))
+  (electric-layout-mode 1)
+  (electric-pair-mode 1))
+
 
 (defun define-mouse-behaviour()
   "Make pointer visible and have the cursor chase it."
@@ -45,10 +52,7 @@
   (toggle-frame-fullscreen)
 
   ;; Disable splash screen
-  (setq-default inhibit-splash-screen t)
-
-  ;; Split frame into two columns
-  (split-window-horizontally))
+  (setq-default inhibit-splash-screen t))
 
 (defun set-theme()
   "Define colours and fonts."

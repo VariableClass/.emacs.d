@@ -48,17 +48,6 @@
   ;; Disable mouse input with amusing consequences
   (handoff-global-mode))
 
-(defun setup-multi-term()
-  "Set multi-term shell to environment shell and set as initial buffer."
-
-  (require 'multi-term)
-  
-  ;; Configure multi-term
-  (setq-default multi-term-program (getenv "SHELL"))
-
-  ;; Open multi-term in main buffer on startup
-  (setq-default initial-buffer-choice 'multi-term))
-
 (defun setup-omnisharp()
   "Install Omnisharp server and add server start to csharp hook."
 
@@ -71,9 +60,13 @@
 
   ;; Add omnisharp to company's list of backends
   (add-to-list 'company-backends 'company-omnisharp)
-  
+
   ;; Start Omnisharp when opening a C# file
-  (add-hook 'csharp-mode-hook 'omnisharp-mode))
+  (add-hook 'csharp-mode-hook 'omnisharp-mode)
+  
+  ;; Set keybindings
+  (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+  (local-set-key (kbd "C-c C-g") 'omnisharp-go-to-definition))
 
 (defun setup-projectile()
   "Enable projectile to support Omnisharp in finding project files."
@@ -92,6 +85,20 @@
   (setq-default visual-fill-column-width line-wrap-index)
   (global-visual-fill-column-mode t)
   (global-visual-line-mode t))
+
+(defun setup-yaml-mode()
+  "Enable YAML syntax highlighting and newline behaviour."
+
+  (require 'yaml-mode)
+
+  ;; Enable automatic YAML file syntax highlighting
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+  ;; Set up automatic newline with indent behaviour
+  (add-hook 'yaml-mode-hook
+            '(lambda()
+               (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
 
 (provide 'package-config)
 ;;; package-config.el ends here

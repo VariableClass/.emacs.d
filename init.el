@@ -8,7 +8,7 @@
   ;; Determine operating system
   (defvar linux-p (string-match "linux" (symbol-name system-type)))
   (defvar macos-p (string-match "darwin" (symbol-name system-type)))
-  (defvar windows-p (string-match "windows" (symbol-name system-type)))
+  (defvar mswindows-p (string-match "windows" (symbol-name system-type)))
 
   ;; Add .emacs.d/lisp to load path and import local modules
   (add-to-list 'load-path "~/.emacs.d/elisp/")
@@ -30,11 +30,10 @@
   (require 'install-packages)
   (declare-function install-packages "install-packages" (packages))
   (install-packages
-   '(csharp-mode company company-quickhelp dash editorconfig epl f flycheck handoff multi-term omnisharp pkg-info popup projectile s sx visual-fill-column))
+   '(csharp-mode company company-quickhelp dash editorconfig epl f flycheck handoff multi-term omnisharp pkg-info popup projectile s sx visual-fill-column yaml-mode))
 
   ;; Configure the various downloaded packages
   (require 'package-config)
-  (declare-function setup-multi-term "package-config" ())
   (declare-function setup-visual-fill-column "package-config" (line-wrap-index))
   (declare-function setup-handoff "package-config" ())
   (declare-function setup-projectile "package-config" ())
@@ -42,14 +41,15 @@
   (declare-function setup-flycheck "package-config" ())
   (declare-function setup-company "package-config" ())
   (declare-function setup-omnisharp "package-config" ())
-  (setup-multi-term)
+  (declare-function setup-yaml-mode "package-config" ())
   (setup-visual-fill-column 120)
   (setup-handoff)
   (setup-projectile)
   (setup-editorconfig)
   (setup-flycheck)
   (setup-company)
-  (setup-omnisharp))
+  (setup-omnisharp)
+  (setup-yaml-mode))
 
 (init)
 
