@@ -64,3 +64,6 @@ ac-comphist.dat
 
 # Customize
 **/custom.el
+
+# Transient
+/transient/

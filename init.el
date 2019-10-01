@@ -30,7 +30,7 @@
   (require 'install-packages)
   (declare-function install-packages "install-packages" (packages))
   (install-packages
-   '(centered-cursor-mode company company-quickhelp csharp-mode dash editorconfig epl f flycheck handoff multi-term omnisharp pkg-info popup projectile s sx visual-fill-column yaml-mode))
+   '(centered-cursor-mode company company-quickhelp csharp-mode dash editorconfig epl f flycheck handoff magit multi-term omnisharp pkg-info popup projectile s sx visual-fill-column yaml-mode))
 
   ;; Configure the various downloaded packages
   (require 'package-config)
