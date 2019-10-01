@@ -4,6 +4,9 @@
 ;;; Code:
 (defun configure-editor()
   "Configure editor options."
+
+  ;; Turn on line numbers
+  (global-display-line-numbers-mode)
   
   ;; Enable column index indicator
   (setq-default column-number-mode t)
@@ -59,13 +62,13 @@
 
   ;; Set colour theme
   (load-theme 'misterioso)
-
-  ;; Set font
+  
+  ;; Set default fontface
   (set-face-attribute 'default nil
    :inherit nil
    :stipple nil
-   :background "#2d3743"
-   :foreground "#e1e1e0"
+   :background "#2E4747"
+   :foreground "#DBC9AF"
    :inverse-video nil
    :box nil
    :strike-through nil
@@ -76,7 +79,10 @@
    :height 113
    :width 'normal
    :foundry "DAMA"
-   :family "Ubuntu Mono"))
+   :family "Ubuntu Mono")
+  
+  (custom-set-faces
+   '(term-color-blue ((t (:foreground "#00FFFF"))))))
 
 (provide 'core-setup)
 ;;; core-setup.el ends here
