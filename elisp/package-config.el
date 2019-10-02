@@ -57,14 +57,13 @@
   (handoff-global-mode))
 
 (defun setup-omnisharp()
-  "Install Omnisharp server and add server start to csharp hook."
+  "Add Omnisharp server start to csharp hook."
 
   (require 'company)
   (require 'omnisharp)
-  (declare-function omnisharp--install-server "omnisharp" (reinstall silent-installation))
-  
-  ;; Install Omnisharp server
-  (omnisharp--install-server nil t)
+
+  ;; Set path to omnisharp
+  (setq omnisharp-server-executable-path "~/.omnisharp/run")
 
   ;; Add omnisharp to company's list of backends
   (add-to-list 'company-backends 'company-omnisharp)
