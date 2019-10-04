@@ -72,8 +72,8 @@
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
   
   ;; Set keybindings
-  (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
-  (local-set-key (kbd "C-c C-g") 'omnisharp-go-to-definition))
+  (global-set-key (kbd "C-.") 'omnisharp-run-code-action-refactoring)
+  (global-set-key (kbd "C-c C-g") 'omnisharp-go-to-definition))
 
 (defun setup-projectile()
   "Enable projectile to support Omnisharp in finding project files."
